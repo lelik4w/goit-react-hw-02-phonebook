@@ -1,5 +1,5 @@
 import React from 'react';
-
+import shortid from 'shortid';
 import styles from './ContactForm.module.css';
 
 class ContactForm extends React.Component {
@@ -7,6 +7,9 @@ class ContactForm extends React.Component {
     name: '',
     number: '',
   };
+
+  nameFormId = shortid.generate();
+  numberFormId = shortid.generate();
 
   changeHandler = e => {
     const target = e.currentTarget;
@@ -32,9 +35,9 @@ class ContactForm extends React.Component {
       <div className={styles.ContactForm}>
         <form onSubmit={this.formHandler}>
           <p>
-            <label htmlFor="nameField">Name</label>
+            <label htmlFor={this.nameFormId}>Name</label>
             <input
-              id="nameField"
+              id={this.nameFormId}
               type="text"
               name="name"
               value={this.state.name}
@@ -45,9 +48,9 @@ class ContactForm extends React.Component {
             />
           </p>
           <p>
-            <label htmlFor="numderField">Number</label>
+            <label htmlFor={this.numberFormId}>Number</label>
             <input
-              id="numderField"
+              id={this.numberFormId}
               type="tel"
               name="number"
               value={this.state.number}
